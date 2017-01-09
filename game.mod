@@ -1,1 +1,30 @@
-Sranie
+param wolumen >=0, <= maxWolumen, integer;
+param jakosc >= minJakosc, <= maxJakosc, integer;
+param cena >= 7, <= 27;
+param reklamaInternet >= 0;
+param reklamaMagazyny >= 0;
+param reklamaTelewizja >= 0;
+param nowyKredyt >= 0, <= maxKredyt;
+param splacanaRata >= 0;
+param przychodZeSprzedazy >= 0;
+param kosztyProdukcji >= 0;
+param kosztZmienny >= 0;
+param kosztReklam >= 0;
+param zyskNaSprzedazy >= 0;
+param zyskNaDzialanosciOperacyjnej >= 0;
+param zyskNaDzialalnosciGospodarczej >= 0;
+param podatekDochodowy >= 0;
+param zysk >= 0;
+param wartoscRyzyka >= 0;
+
+
+var wartoscRyzyka <= ryzyko;
+var przychodZeSprzedazy = cena * wolumen;
+var kosztyProdukcji = kosztStaly + kosztZmienny * wolumen;
+var kosztReklam = reklamaInternet + reklamaMagazyny + reklamaTelewizja;
+var zyskNaSprzedazy = przychodZeSprzedazy - kosztyProdukcji - kosztReklam;
+var zyskNaDzialanosciOperacyjnej = zyskNaSprzedazy - amortyzacja;
+var zyskNaDzialalnosciGospodarczej = zyskNaDzialanosciOperacyjnej - splacanaRata;
+var podatekDochodowy = zyskNaDzialalnosciGospodarczej * stopaPodatkowa;
+var zysk = zyskNaDzialalnosciGospodarczej - podatekDochodowy;
+var wartoscRyzyka = cena / jakosc;
