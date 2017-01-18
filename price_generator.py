@@ -12,6 +12,6 @@ def calculatePoly(p, value):
     return round(ret, 2)
 
 with open("wyniki.txt", 'w', encoding="utf8") as f:
-    for i in range(10000, 150000, 5000):
-        for j in range(101):
-            f.writelines("{} {} {}\n".format(calculateUnitCost(i, j), i , j))
+    for i in range(10000, 350000, 15500):
+        for j in range(10, 85, 9):
+            f.writelines("{} {} {}\n".format(j, i, calculateUnitCost(i, j)))
